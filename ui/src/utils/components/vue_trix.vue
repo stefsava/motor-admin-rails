@@ -30,6 +30,9 @@
 import Trix from 'trix'
 import 'trix/dist/trix.css'
 import { AttachmentUpload } from '@rails/actiontext/app/javascript/actiontext/attachment_upload'
+Trix.config.blockAttributes.heading_two = { tagName: "h2", terminal: true, breakOnReturn: true, group: false };
+Trix.config.blockAttributes.heading_three = { tagName: "h3", terminal: true, breakOnReturn: true, group: false };
+Trix.config.blockAttributes.heading_four = { tagName: "h4", terminal: true, breakOnReturn: true, group: false };
 
 export default {
   name: 'VueTrix',
@@ -184,11 +187,22 @@ export default {
       this.editorContent = event.srcElement ? event.srcElement.value : event.target.value
       this.$emit('update:modelValue', this.editorContent)
     },
+    insertHeadingButtons() {
+      const h2ButtonHTML = '<button type="button" class="trix-button trix-button--icon trix-button--icon-heading-1" data-trix-attribute="heading_two" title="H2">H2</button>';
+      const h3ButtonHTML = '<button type="button" class="trix-button trix-button--icon trix-button--icon-heading-1" data-trix-attribute="heading_three" title="H3">H3</button>';
+      const h4ButtonHTML = '<button type="button" class="trix-button trix-button--icon trix-button--icon-heading-1" data-trix-attribute="heading_four" title="H4">H4</button>';
+      const sibling1 = document.querySelector(".trix-button[data-trix-attribute='heading1']");
+      sibling1.insertAdjacentHTML("afterend", h2ButtonHTML);
+      const sibling2 = document.querySelector("[data-trix-attribute='heading_two']");
+      sibling2.insertAdjacentHTML("afterend", h3ButtonHTML);
+      const sibling3 = document.querySelector("[data-trix-attribute='heading_three']");
+      sibling3.insertAdjacentHTML("afterend", h4ButtonHTML);
+    },
     handleInitialize (event) {
+      this.insertHeadingButtons()
       if (this.autofocus) {
         this.$refs.trix.editor.setSelectedRange(0)
       }
-
       this.$emit('trix-initialize', this.emitInitialize)
     },
     storageId (component) {
