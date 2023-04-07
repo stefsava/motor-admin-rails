@@ -3,9 +3,9 @@
 require_relative 'lib/motor/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = 'motor-admin'
+  spec.name        = 'motor-admin-pz'
   spec.version     = Motor::VERSION
-  spec.authors     = ['Pete Matsyburka']
+  spec.authors     = ['Pete Matsyburka', 'Stefano Savanelli']
   spec.email       = ['pete@getmotoradmin.com']
   spec.summary     = 'Low-code Admin panel and Business intelligence'
   spec.license     = 'AGPL-3.0'
@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     'bug_tracker_uri' => 'https://github.com/motor-admin/motor-admin-rails/issues',
     'homepage_uri' => 'https://www.getmotoradmin.com',
-    'source_code_uri' => 'https://github.com/motor-admin/motor-admin-rails',
+    'source_code_uri' => 'https://github.com/stefsava/motor-admin-rails',
     'documentation_uri' => 'https://github.com/motor-admin/motor-admin-rails/tree/master/guides',
     'rubygems_mfa_required' => 'true'
   }
@@ -51,5 +51,7 @@ Gem::Specification.new do |spec|
     Motor Admin allows to create a flexible admin panel with writing less code.
     All customizations to the admin panel can be made directly in the UI without
     the need of writing any configurations code.
+
+    This Gem is a fork of motor-admin made for personal use and not recommended for general use.
   TEXT
 end
