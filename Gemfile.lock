@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    motor-admin (0.4.21)
+    motor-admin-pz (0.4.21)
       ar_lazy_preload (~> 1.0)
       audited (~> 5.0)
       cancancan (~> 3.0)
@@ -64,9 +64,6 @@ GEM
     activerecord (7.0.4)
       activemodel (= 7.0.4)
       activesupport (= 7.0.4)
-    activerecord-sqlserver-adapter (7.0.0.0)
-      activerecord (~> 7.0.0)
-      tiny_tds
     activestorage (7.0.4)
       actionpack (= 7.0.4)
       activejob (= 7.0.4)
@@ -303,7 +300,6 @@ GEM
       mini_portile2 (~> 2.8.0)
     thor (1.2.1)
     timeout (0.3.1)
-    tiny_tds (2.1.5)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.3.0)
@@ -327,10 +323,10 @@ PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
   x86_64-darwin-20
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
-  activerecord-sqlserver-adapter
   aws-sdk-s3
   bootsnap
   brakeman
@@ -341,7 +337,7 @@ DEPENDENCIES
   faker
   image_processing
   letter_opener
-  motor-admin!
+  motor-admin-pz!
   mysql2
   oj
   pg
@@ -355,7 +351,6 @@ DEPENDENCIES
   rubocop-rspec
   simplecov
   sqlite3
-  tiny_tds
   webmock
   webrick
   yard
