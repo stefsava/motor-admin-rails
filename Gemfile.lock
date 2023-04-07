@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    motor-admin (0.4.9)
+    motor-admin-pz (0.4.9)
       ar_lazy_preload (~> 1.0)
       audited (~> 5.0)
       cancancan (~> 3.0)
@@ -329,7 +329,7 @@ DEPENDENCIES
   faker
   image_processing
   letter_opener
-  motor-admin!
+  motor-admin-pz!
   mysql2
   oj
   pg
