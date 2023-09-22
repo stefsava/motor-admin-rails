@@ -31,6 +31,47 @@ import Trix from 'trix'
 import 'trix/dist/trix.css'
 import { AttachmentUpload } from '@rails/actiontext/app/javascript/actiontext/attachment_upload'
 
+// PZ custom init
+
+window.trix = Trix
+Trix.config.blockAttributes.default.tagName = "p"
+Trix.config.blockAttributes.default.breakOnReturn = true;
+
+Trix.Block.prototype.breaksOnReturn = function(){
+  const attr = this.getLastAttribute();
+  const config = Trix.getBlockConfig(attr ? attr : "default");
+  return config ? config.breakOnReturn : false;
+};
+Trix.LineBreakInsertion.prototype.shouldInsertBlockBreak = function(){
+  if(this.block.hasAttributes() && this.block.isListItem() && !this.block.isEmpty()) {
+    return this.startLocation.offset > 0
+  } else {
+    return !this.shouldBreakFormattedBlock() ? this.breaksOnReturn : false;
+  }
+};
+
+const toolbarContent = new DOMParser().parseFromString(Trix.config.toolbar.getDefaultHTML(), 'text/html')
+
+Trix.config.blockAttributes.heading1.tagName = "h2";
+const h1 = toolbarContent.querySelector('button[data-trix-attribute="heading1"]')
+h1.classList.remove('icon')
+h1.innerText='H2'
+h1.classList.remove('trix-button--icon-heading-1')
+h1.classList.remove('trix-button--icon')
+
+const heading = Trix.config.blockAttributes.heading1
+Trix.config.blockAttributes.heading2 = { heading, tagName: "h3" };
+const h2 = h1.cloneNode()
+h2.dataset.trixAttribute = 'heading2'
+h2.innerText='H3'
+
+h1.after(h2)
+
+Trix.config.toolbar.getDefaultHTML = () => toolbarContent.body.innerHTML
+
+
+// PZ custom end
+
 export default {
   name: 'VueTrix',
   props: {
